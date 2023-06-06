@@ -64,7 +64,7 @@ public class GzipModule extends ReactContextBaseJavaModule {
   public static byte[] compress(String string) throws IOException {
     ByteArrayOutputStream os = new ByteArrayOutputStream(string.length());
     GZIPOutputStream gos = new GZIPOutputStream(os);
-    gos.write(string.getBytes(StartActivity.UTF_8));
+    gos.write(string.getBytes(StandardCharsets.UTF_8));
     gos.close();
     byte[] compressed = os.toByteArray();
     os.close();
@@ -79,7 +79,7 @@ public class GzipModule extends ReactContextBaseJavaModule {
     byte[] data = new byte[BUFFER_SIZE];
     int bytesRead;
     while ((bytesRead = gis.read(data)) != -1) {
-      string.append(new String(data, 0, bytesRead, StartActivity.UTF_8));
+      string.append(new String(data, 0, bytesRead, StandardCharsets.UTF_8));
     }
     gis.close();
     is.close();
